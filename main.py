@@ -60,3 +60,6 @@ if __name__ == "__main__":
     
     # Test Scenario 3: Bad input boundary telemetry execution test
     run_border_simulation(consignment="BATCH-IND-MALFORMED", s1=1.45, s2=0.10, s3=0.0)
+
+# Triggering automated validation pipeline
+

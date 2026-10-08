@@ -1,0 +1,69 @@
+"""
+Automated validation test suite for the AgroPulse-Sentinel mathematical edge engine.
+"""
+
+import pytest
+from aps_core.engine import CompoundBiosecurityEngine
+from aps_core.crypto import EdgeLedgerSigner
+from aps_core.exceptions import InvalidSeverityScoreError
+
+
+def test_engine_initialization_validation():
+    """Verifies engine rejects malformed or missing identification fields."""
+    with pytest.raises(ValueError):
+        CompoundBiosecurityEngine(consignment_id="", operator_id="OFFICER_01")
+
+
+def test_vlm_mathematical_accuracy_safe():
+    """Verifies safe parameter matrix calculations yield correct CBI state bounds."""
+    engine = CompoundBiosecurityEngine("TEST-BATCH-01", "OFFICER_ALIGARH")
+    cbi, state = engine.evaluate_threat_matrix(s1=0.1, s2=0.05, s3=0.1)
+    
+    assert cbi == 0.0825
+    assert state == "SAFE"
+
+
+def test_vlm_mathematical_accuracy_warning():
+    """Verifies threat classification shifts reliably into warnings."""
+    engine = CompoundBiosecurityEngine("TEST-BATCH-02", "OFFICER_ALIGARH")
+    cbi, state = engine.evaluate_threat_matrix(s1=0.5, s2=0.5, s3=0.5)
+    
+    assert cbi == 0.50
+    assert state == "WARNING"
+
+
+def test_vlm_mathematical_accuracy_critical():
+    """Verifies critical bio-threat inputs trigger instantaneous containment alerts."""
+    engine = CompoundBiosecurityEngine("TEST-BATCH-03", "OFFICER_ALIGARH")
+    cbi, state = engine.evaluate_threat_matrix(s1=0.9, s2=0.8, s3=0.7)
+    
+    assert cbi == 0.835
+    assert state == "CRITICAL_ALERT"
+
+
+def test_out_of_bounds_severity_rejection():
+    """Verifies the engine throws safety errors if localized matrix values exceed bounds."""
+    engine = CompoundBiosecurityEngine("TEST-BATCH-04", "OFFICER_ALIGARH")
+    
+    with pytest.raises(InvalidSeverityScoreError):
+        engine.evaluate_threat_matrix(s1=1.5, s2=0.2, s3=0.1)
+        
+    with pytest.raises(InvalidSeverityScoreError):
+        engine.evaluate_threat_matrix(s1=-0.2, s2=0.2, s3=0.1)
+
+
+def test_cryptographic_ticket_immutability():
+    """Verifies edge cryptographic block data serialization is intact and reproducible."""
+    metadata = {
+        "consignment_id": "TEST-BATCH-05",
+        "operator_id": "OFFICER_ALIGARH",
+        "timestamp": 1600000000.0
+    }
+    cbi_score = 0.25
+    
+    ticket_one = EdgeLedgerSigner.generate_clearance_ticket(metadata, cbi_score)
+    ticket_two = EdgeLedgerSigner.generate_clearance_ticket(metadata, cbi_score)
+    
+    assert ticket_one["signature_hash"] == ticket_two["signature_hash"]
+    assert "payload" in ticket_one
+    assert ticket_one["payload"]["status"] == "APPROVED_FOR_TRANSIT"

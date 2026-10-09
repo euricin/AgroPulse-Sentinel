@@ -8,6 +8,7 @@
 ---
 
 ## 🔗 Integrated Deep-Tech & Venture Ecosystem
+**AgroPulse-Sentinel:** [Launch Live App](https://biosecurity-cold-cha-mvkd.bolt.host)
 *   **Pharma Market Intelligence Dashboard:** [Launch Live Market Analytics Suite](https://pharma-market-intell-62oe.bolt.host)
 *   **AeroAge Capital Longevity Suite:** [Launch Live Venture Tracker Dashboard](https://longevity-biotech-in-1apw.bolt.host)
 

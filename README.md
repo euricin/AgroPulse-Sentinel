@@ -8,7 +8,6 @@
 ---
 
 ## 🔗 Integrated Deep-Tech & Venture Ecosystem
-*   **Active Biosecurity & Cold-Chain Ledger:** [Launch Operational Border Screening Console](https://github.com)
 *   **Pharma Market Intelligence Dashboard:** [Launch Live Market Analytics Suite](https://pharma-market-intell-62oe.bolt.host)
 *   **AeroAge Capital Longevity Suite:** [Launch Live Venture Tracker Dashboard](https://longevity-biotech-in-1apw.bolt.host)
 

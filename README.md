@@ -7,6 +7,14 @@
 
 ---
 
+## 🔗 Integrated Deep-Tech & Venture Ecosystem
+*   **Active Biosecurity & Cold-Chain Ledger:** [Launch Operational Border Screening Console](https://github.com)
+*   **Pharma Market Intelligence Dashboard:** [Launch Live Market Analytics Suite](https://pharma-market-intell-62oe.bolt.host)
+*   **AeroAge Capital Longevity Suite:** [Launch Live Venture Tracker Dashboard](https://longevity-biotech-in-1apw.bolt.host)
+
+
+---
+
 ## 📌 Executive Summary
 **AgroPulse-Sentinel (APS)** defines a high-performance, decentralized software architecture engineered to shield national food supply chains from tactical **agro-terrorism** and high-consequence biological pathogens (e.g., *Bacillus anthracis*, *Brucella abortus*, and Foot-and-Mouth Disease virus). 
 

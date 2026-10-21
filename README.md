@@ -1,9 +1,7 @@
 # AgroPulse-Sentinel (APS)
 ### Edge-Native Directed Acyclic Graph (DAG) Ledger for Decentralised Border Biosecurity & Livestock Cold-Chain Defense
 
-**Author:** Asma Khan  
-**Location:** Aligarh Logistics Corridor, India  
-**Domain Authority:** Engineered via structural operational heuristics from Dr. Kalimuddin Khan, Senior Veterinary Officer (Livestock & Meat Transport Inspection)
+
 
 ---
 
